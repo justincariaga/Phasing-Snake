@@ -5,10 +5,9 @@ class Snake:
 	def __init__(self, window_width, window_height, space):
 		self.sprite_width = 50
 		self.sprite_height = 50
-		self.color = (255, 0, 0, 128)
+		self.color = (26, 188, 156)
 
-		self.sprites = [pygame.Surface((self.sprite_width, self.sprite_height), 
-			pygame.SRCALPHA, 32).convert_alpha() for i in range(3)]
+		self.sprites = [pygame.Surface((self.sprite_width, self.sprite_height)) for i in range(3)]
 
 		self.rects = [sprite.get_rect() for sprite in self.sprites]
 		for i in range(len(self.rects)):
@@ -42,9 +41,8 @@ class Food:
 	def __init__(self, space):
 		self.sprite_width = 50
 		self.sprite_height = 50
-		self.color = (0, 255, 0, 128)
-		self.surface = pygame.Surface((self.sprite_width, self.sprite_height), 
-			pygame.SRCALPHA, 32).convert_alpha()
+		self.color = (230, 126, 34)
+		self.surface = pygame.Surface((self.sprite_width, self.sprite_height))
 		self.rect = self.surface.get_rect()
 		self.surface.fill(self.color)
 		self.appear(space)

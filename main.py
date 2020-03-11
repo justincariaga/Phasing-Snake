@@ -42,19 +42,18 @@ class Game:
 					pygame.quit()
 					sys.exit()
 					self.playing = False
-			self.window.fill((0, 0, 0))
+			self.window.fill((30, 39, 46))
 			if self.is_dead:
 				pass
 			else:
-				self.check_snake_collision()
-				self.check_food_collision()
 
 				self.handle_input()
+				self.check_snake_collision()
+				self.check_food_collision()
 
 				for sprite in range(len(self.snake.sprites)):
 					self.window.blit(self.snake.sprites[sprite], self.snake.rects[sprite])
 				self.window.blit(self.food.surface, self.food.rect)
-
 			pygame.display.update()
 			self.clock.tick(self.FPS)
 
