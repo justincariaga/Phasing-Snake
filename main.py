@@ -67,8 +67,7 @@ class Game:
 
 	def check_food_collision(self):
 		if self.snake.rects[0].colliderect(self.food.rect):
-			self.snake.sprites.append(pygame.Surface((self.snake.sprite_width, self.snake.sprite_height), 
-				pygame.SRCALPHA, 32).convert_alpha())
+			self.snake.sprites.append(pygame.Surface((self.snake.sprite_width, self.snake.sprite_height)))
 			self.snake.rects.append(self.snake.sprites[-1].get_rect())
 			self.snake.rects[-1].topleft = self.snake.rects[-2].topleft
 			self.snake.sprites[-1].fill(self.snake.color)
