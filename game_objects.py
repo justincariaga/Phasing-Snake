@@ -3,6 +3,9 @@ import random
 
 class Snake:
 	def __init__(self, window_width, window_height, space):
+		self.reset(window_width, window_height, space)
+
+	def reset(self, window_width, window_height, space):
 		self.sprite_width = 50
 		self.sprite_height = 50
 		self.color = (26, 188, 156)
@@ -18,7 +21,7 @@ class Snake:
 		self.dx = 0
 		self.dy = -1
 		self.speed = 50
-
+		
 	def update(self, window_width, window_height, space):
 		space.append(self.rects[-1].topleft)
 		for i in range(-1, -len(self.sprites), -1):
@@ -34,8 +37,10 @@ class Snake:
 			self.rects[0].top = 0
 		if self.rects[0].bottom <= 0:
 			self.rects[0].bottom = window_height
-		space.remove(self.rects[0].topleft)
-
+		try:
+			space.remove(self.rects[0].topleft)
+		except:
+			pass
 
 class Food:
 	def __init__(self, space):
