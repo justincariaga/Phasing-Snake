@@ -30,13 +30,18 @@ class Snake:
 		self.rects[0].left += self.dx * self.speed
 		self.rects[0].top += self.dy * self.speed
 		if self.rects[0].left >= window_width:
-			self.rects[0].left = 0
+			self.rects[0].top = random.randrange(0, window_height)
+			self.rects[0].left = random.randrange(0, window_width // 2)
 		if self.rects[0].right <= 0:
-			self.rects[0].right = window_width
+			self.rects[0].right = random.randrange(window_width // 2, window_width)
+			self.rects[0].bottom = random.randrange(0, window_height)
 		if self.rects[0].top >= window_height:
-			self.rects[0].top = 0
+			self.rects[0].top = random.randrange(0, window_height // 2)
+			self.rects[0].right = random.randrange(0, window_width)
 		if self.rects[0].bottom <= 0:
-			self.rects[0].bottom = window_height
+			self.rects[0].bottom = random.randrange(window_height // 2, window_height)
+			self.rects[0].left = random.randrange(0, window_width)
+
 		try:
 			space.remove(self.rects[0].topleft)
 		except:
