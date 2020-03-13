@@ -13,8 +13,10 @@ import resources
 
 from pygame.locals import *
 
+
 pygame.init()
 pygame.mixer.init()
+os.chdir(r"C:\Users\justi\OneDrive\Documents\GitHub\Phasing-Snake")
 
 
 
@@ -27,7 +29,10 @@ class Game:
 		self.window_width = 50 * 25
 		self.window_height = 50 * 15
 		self.window = pygame.display.set_mode((self.window_width, self.window_height))
+		self.cover_art = pygame.image.load("cover_art.jpg")
+
 		pygame.display.set_caption("Phasing Snake")
+
 
 		self.space = [(i * 50, j * 50) for i in range(self.window_width // 50) for j in range(self.window_height // 50)]
 		self.snake = game_objects.Snake(self.window_width, self.window_height, self.space)
@@ -35,7 +40,7 @@ class Game:
 
 		# labels
 		self.font_color = (255, 255, 255)
-		self.font_obj = pygame.font.SysFont("Arial", 50, bold=True)
+		self.font_obj = pygame.font.SysFont("Terminal", 50, bold=True)
 		self.score = 0
 		self.texts = {
 			"title": self.font_obj.render("Phasing Snake", True, self.font_color),
@@ -68,8 +73,10 @@ class Game:
 			self.texts["score"] =  self.font_obj.render("Score: {}".format(self.score), True, self.font_color)
 			self.window.blit(self.texts["score"], self.text_rects["score"])
 			if self.is_dead:
-				self.window.blit(self.texts["title"], self.text_rects["title"])
-				self.window.blit(self.texts["enter"], self.text_rects["enter"])
+				self.window.blit(self.cover_art, (0, 0))
+				self.window.blit(self.texts["score"], self.text_rects["score"])
+
+
 			else:
 				self.handle_input()
 				self.check_snake_collision()
