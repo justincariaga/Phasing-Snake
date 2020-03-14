@@ -1,17 +1,16 @@
-import sys
-from cx_Freeze import setup, Executable
+import cx_Freeze
 
-# Dependencies are automatically detected, but it might need fine tuning.
-build_exe_options = {"packages": ["os", "pygame"]}
+executables = [cx_Freeze.Executable(
+    script="main.py")]
 
-# GUI applications require a different base on Windows (the default is for a
-# console application).
-base = None
-if sys.platform == "win32":
-    base = "Win32GUI"
-
-setup(  name = "Phasing Snake",
-        version = "0.1",
-        description = "The classic snake game with a twist!",
-        options = {"build_exe": build_exe_options},
-        executables = [Executable("main.py", base=base)])
+cx_Freeze.setup(
+    name="Phasing Snake",
+    version="1.0",
+    author="Teenage Phasers",
+    description="swoosh",
+    options={"build_exe": {"packages":["pygame"],
+                           "include_files":[
+                                "cover_art.jpg"
+                                ]}},
+    executables = executables
+    )

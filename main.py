@@ -16,9 +16,14 @@ from pygame.locals import *
 
 pygame.init()
 pygame.mixer.init()
-os.chdir(r"C:\Users\justi\OneDrive\Documents\GitHub\Phasing-Snake")
 
+def find_data_file(filename):
+    if getattr(sys, 'frozen', False):
+        datadir = os.path.dirname(sys.executable)
+    else:
+        datadir = os.path.dirname(__file__)
 
+    return os.path.join(datadir, filename)
 
 class Game:
 	def __init__(self):
@@ -29,7 +34,8 @@ class Game:
 		self.window_width = 50 * 25
 		self.window_height = 50 * 15
 		self.window = pygame.display.set_mode((self.window_width, self.window_height))
-		self.cover_art = pygame.image.load("cover_art.jpg")
+		# self.cover_art = pygame.image.load("cover_art.jpg")
+		self.cover_art = pygame.image.load(find_data_file("cover_art.jpg"))
 
 		pygame.display.set_caption("Phasing Snake")
 
